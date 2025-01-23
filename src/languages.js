@@ -1,3 +1,5 @@
+// taken directly from project files @ https://github.com/scrimba/learn-react
+
 export const languages = [
     {
         name: "HTML",

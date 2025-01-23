@@ -1,11 +1,19 @@
+import clsx from "clsx"
+
 import { languages } from "../languages"
 
-export default function Languages() {
-    const langElems = languages.map(lang => <p key={lang.name} style={{backgroundColor: lang.backgroundColor, color: lang.color}}>{lang.name}</p>)
+export default function Languages({ count }) {
+    const langElems = languages.map((lang, idx) => (
+    <span key={lang.name} 
+    style={{backgroundColor: lang.backgroundColor, color: lang.color}}
+    className={clsx(idx < count && "lost")}
+    >
+        {lang.name}
+    </span>))
 
     return (
-        <div className="languages">
+        <section className="languages">
             {langElems}
-        </div>
+        </section>
     )
 }

@@ -48,6 +48,7 @@ header > p {
 
   border-radius: 10px;
   width: 500px;
+  height: 75px;
 }
 
 .status > h2 {
@@ -73,11 +74,27 @@ header > p {
   font-size: 1rem;
 }
 
-.languages > p {
+.languages > span {
   margin: 2px;
   padding: 3px;
   border-radius: 2px;
   border: none;
+  position: relative;
+}
+
+/* Dimmed overlay with skull on "lost" languages (taken directly from project instructions) */
+.languages > .lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .word {
