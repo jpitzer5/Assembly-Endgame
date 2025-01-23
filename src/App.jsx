@@ -35,7 +35,20 @@ export default function App() {
       <Status count={wrongGuessCount} won={isGameWon} lost={isGameLost} farewell={lastGuessWrong} />
       <Languages count={wrongGuessCount} />
       <Word word={currentWord} guessed={guessed} />
-      <Keyboard click={letterClick} alphabet={alphabet} word={currentWord} guessed={guessed} />
+      {/* Combined visually-hidden aria-live region for status updates (taken almost directly from project instructions) */}
+      <section className='sr-only' aria-live='polite' role='status'>
+        <p>
+            {!lastGuessWrong ? 
+                `Correct! The letter ${guessed[guessed.length - 1]} is in the word.` : 
+                `Sorry, the letter ${guessed[guessed.length - 1]} is not in the word.`
+            }
+            You have {languages.length - 1 - wrongGuessCount} attempts left.
+        </p>
+        <p>
+          Current word: {currentWord.split("").map(letter => guessedLetters.includes(letter) ? letter + "." : "blank.").join(" ")}
+        </p>
+      </section>
+      <Keyboard click={letterClick} disabled={isGameOver} alphabet={alphabet} word={currentWord} guessed={guessed} />
       {isGameOver && <button className="new-game">New Game</button>}
     </main>
   )

@@ -39,7 +39,7 @@ export default function Status({ count, farewell, won, lost }) {
     }
 
     return (
-        <section style={status.style} className="status">
+        <section style={status.style} className="status" aria-live="polite" role="status">
             {status.content}
         </section>
     )
