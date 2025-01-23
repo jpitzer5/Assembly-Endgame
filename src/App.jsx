@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Confetti from "react-confetti"
+
+
 import Header from './components/Header'
 import Status from './components/Status'
 import Languages from './components/Languages'
@@ -41,7 +44,7 @@ export default function App() {
       <Header />
       <Status count={wrongGuessCount} won={isGameWon} lost={isGameLost} farewell={lastGuessWrong} />
       <Languages count={wrongGuessCount} />
-      <Word word={currentWord} guessed={guessed} />
+      <Word word={currentWord} guessed={guessed} lost={isGameLost} />
       {/* Combined visually-hidden aria-live region for status updates (taken almost directly from project instructions) */}
       <section className='sr-only' aria-live='polite' role='status'>
         <p>
@@ -57,6 +60,7 @@ export default function App() {
       </section>
       <Keyboard click={letterClick} disabled={isGameOver} alphabet={alphabet} word={currentWord} guessed={guessed} />
       {isGameOver && <button onClick={newGame} className="new-game">New Game</button>}
+      {isGameWon && <Confetti recycle={false} numberOfPieces={1000} />}
     </main>
   )
 }

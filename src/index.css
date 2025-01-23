@@ -121,6 +121,10 @@ header > p {
   color: #F9F4DA;
 }
 
+.word > .missed-letter {
+  color: #BA2A2A;
+}
+
 .keyboard {
   margin-top: 50px;
   display: flex;
