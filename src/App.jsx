@@ -5,18 +5,19 @@ import Languages from './components/Languages'
 import Word from './components/Word'
 import Keyboard from './components/Keyboard'
 import { languages } from './languages'
+import { getRandWord } from './utils'
 
 export default function App() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-  const [currentWord, setCurrentWord] = useState("react")
+  const [currentWord, setCurrentWord] = useState(() => getRandWord())
 
   const [guessed, setGuessed] = useState([])
 
   const wrongGuessCount = guessed.filter(char => !currentWord.includes(char)).length
 
   // check game state
-  const isGameWon = (guessed.filter(char => currentWord.includes(char)).length === currentWord.length)
+  const isGameWon = currentWord.split("").every(char => guessed.includes(char))
   const isGameLost = (wrongGuessCount === languages.length - 1)
   const isGameOver = isGameWon || isGameLost
 
@@ -27,6 +28,12 @@ export default function App() {
     if (!guessed.includes(letter)) {
       setGuessed(prev => [...prev, letter])
     }
+  }
+
+  // start new game
+  function newGame() {
+    setCurrentWord(getRandWord())
+    setGuessed([])
   }
 
   return (
@@ -45,11 +52,11 @@ export default function App() {
             You have {languages.length - 1 - wrongGuessCount} attempts left.
         </p>
         <p>
-          Current word: {currentWord.split("").map(letter => guessedLetters.includes(letter) ? letter + "." : "blank.").join(" ")}
+          Current word: {currentWord.split("").map(letter => guessed.includes(letter) ? letter + "." : "blank.").join(" ")}
         </p>
       </section>
       <Keyboard click={letterClick} disabled={isGameOver} alphabet={alphabet} word={currentWord} guessed={guessed} />
-      {isGameOver && <button className="new-game">New Game</button>}
+      {isGameOver && <button onClick={newGame} className="new-game">New Game</button>}
     </main>
   )
 }

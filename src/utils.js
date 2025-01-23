@@ -1,3 +1,5 @@
+import { words } from "./words"
+
 // taken directly from project files @ https://github.com/scrimba/learn-react
 
 export function getFarewellText(language) {
@@ -18,4 +20,11 @@ export function getFarewellText(language) {
 
     const randomIndex = Math.floor(Math.random() * options.length);
     return options[randomIndex];
+}
+
+// end of copying
+
+export function getRandWord() {
+    const randIdx = Math.floor(Math.random() * words.length)
+    return words[randIdx]
 }
