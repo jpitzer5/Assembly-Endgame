@@ -1,7 +1,7 @@
 import { getFarewellText } from "../utils"
 import { languages } from "../languages"
 
-export default function Status({ count, farewell, won, lost }) {
+export default function Status({ count, wrong, won, lost }) {
     
     let statuses = {
         won: {
@@ -15,13 +15,14 @@ export default function Status({ count, farewell, won, lost }) {
             style: {backgroundColor: "#BA2A2A"},
             content: <>
                         <h2>Game over!</h2>
-                        <p>You lose! Better start learning Assembly 😭</p>
+                        <p>You lose! Better luck next time 😭</p>
                     </>
         },
-        lang: {
+        wrong: {
             style: {background: "#7A5EA7", border: "1px dashed #323232", fontStyle: "italic", fontWeight: 400},
             content: <>
-                        <h2>{count && getFarewellText(languages[count - 1].name)}</h2>
+                        <h2>Incorrect!</h2>
+                        <p>{`You have ${8-count} more incorrect guesses before you lose`}</p>
                     </>
         },
         empty: {
@@ -34,8 +35,8 @@ export default function Status({ count, farewell, won, lost }) {
         status = statuses.won
     } else if (lost) {
         status = statuses.lost
-    } else if (farewell) {
-        status = statuses.lang
+    } else if (wrong) {
+        status = statuses.wrong
     }
 
     return (

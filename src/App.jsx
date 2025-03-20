@@ -42,7 +42,7 @@ export default function App() {
   return (
     <main>
       <Header />
-      <Status count={wrongGuessCount} won={isGameWon} lost={isGameLost} farewell={lastGuessWrong} />
+      <Status count={wrongGuessCount} won={isGameWon} lost={isGameLost} wrong={lastGuessWrong} />
       <Languages count={wrongGuessCount} />
       <Word word={currentWord} guessed={guessed} lost={isGameLost} />
       {/* Combined visually-hidden aria-live region for status updates (taken almost directly from project instructions) */}
