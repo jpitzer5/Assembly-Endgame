@@ -25,6 +25,13 @@ export default function Status({ count, wrong, won, lost }) {
                         <p>{`You have ${8-count} more incorrect guesses before you lose`}</p>
                     </>
         },
+        right: {
+            style: {backgroundColor: "#10A95B"},
+            content: <>
+                        <h2>Yes!</h2>
+                        <p>Keep guessing to save Hangman!</p>
+                    </>
+        },
         empty: {
             style: {visibility: "hidden"},
         }

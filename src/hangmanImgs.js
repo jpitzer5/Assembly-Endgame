@@ -8,12 +8,4 @@ import hangman7 from "../assets/hangmanImages/7.png"
 import hangman8 from "../assets/hangmanImages/8.png"
 import hangman9 from "../assets/hangmanImages/9.png"
 
-const hangman = [hangman1, hangman2, hangman3, hangman4, hangman5, hangman6, hangman7, hangman8, hangman9]
-
-export default function Languages({ count }) {
-    return (
-        <section className="hangmanImg">
-            <img src={hangman[count]} />
-        </section>
-    )
-}
+export default hangmanImgs = [hangman1, hangman2, hangman3, hangman4, hangman5, hangman6, hangman7, hangman8, hangman9]

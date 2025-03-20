@@ -4,7 +4,8 @@ import Confetti from "react-confetti"
 
 import Header from './components/Header'
 import Status from './components/Status'
-import Languages from './components/Languages'
+// import Languages from './components/Languages'
+import Hangman from './components/Hangman'
 import Word from './components/Word'
 import Keyboard from './components/Keyboard'
 import { languages } from './languages'
@@ -43,7 +44,7 @@ export default function App() {
     <main>
       <Header />
       <Status count={wrongGuessCount} won={isGameWon} lost={isGameLost} wrong={lastGuessWrong} />
-      <Languages count={wrongGuessCount} />
+      <Hangman count={wrongGuessCount} />
       <Word word={currentWord} guessed={guessed} lost={isGameLost} />
       {/* Combined visually-hidden aria-live region for status updates (taken almost directly from project instructions) */}
       <section className='sr-only' aria-live='polite' role='status'>
